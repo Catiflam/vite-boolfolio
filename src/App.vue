@@ -1,10 +1,11 @@
 <script>
-import ProjectList from "./components/projects/Projectlist.vue";
+import ProjectList from "./assets/components/ProjectList.vue";
 import axios from "axios";
+
 export default {
 	data() {
 		return {
-			post: [],
+			project: [],
 			api: {
 				baseUrl: "http://127.0.0.1:8000/api/",
 			},
@@ -13,8 +14,8 @@ export default {
 	components: { ProjectList },
 
 	methods: {
-		fetchProject(uri = this.api.baseUrl + "project") {
-			axios.get(uri).then((response) => {
+		fetchProject() {
+			axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
 				this.project = response.data.data;
 			});
 		},
@@ -27,9 +28,11 @@ export default {
 </script>
 
 <template>
-	<h1>Hello World</h1>
-	<hr />
-	<ProjectList />
+	<div class="container">
+		<h1>Hello World</h1>
+		<hr />
+		<ProjectList :projects="project" />
+	</div>
 </template>
 
 <style lang="scss"></style>
