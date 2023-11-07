@@ -5,7 +5,7 @@ import axios from "axios";
 export default {
 	data() {
 		return {
-			project: [],
+			projects: [],
 			api: {
 				baseUrl: "http://127.0.0.1:8000/api/",
 			},
@@ -14,9 +14,9 @@ export default {
 	components: { ProjectList },
 
 	methods: {
-		fetchProject() {
-			axios.get("http://127.0.0.1:8000/api/projects").then((response) => {
-				this.project = response.data.data;
+		fetchProject(uri = this.api.baseUrl + "projects") {
+			axios.get(uri).then((response) => {
+				this.projects = response.data.data;
 			});
 		},
 	},
@@ -31,7 +31,7 @@ export default {
 	<div class="container">
 		<h1>Hello World</h1>
 		<hr />
-		<ProjectList :projects="project" />
+		<ProjectList :projects="projects" />
 	</div>
 </template>
 

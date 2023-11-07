@@ -1,12 +1,13 @@
 <script>
+import ProjectCard from "./ProjectCard.vue";
+
 export default {
 	data() {
 		return {};
 	},
 
-	props: {
-		projects: Array,
-	},
+	props: { projects: Array },
+	components: { ProjectCard },
 };
 </script>
 
@@ -14,13 +15,7 @@ export default {
 	<div class="container">
 		<h2>ProjectList</h2>
 		<div class="row row-cols-3 g-4">
-			<div class="col" v-for="project in projects">
-				<div class="card">
-					<div class="card-body">
-						<h4>{{ project.title }}</h4>
-					</div>
-				</div>
-			</div>
+			<ProjectCard class="col" v-for="project in projects" :project="project" />
 		</div>
 	</div>
 </template>
