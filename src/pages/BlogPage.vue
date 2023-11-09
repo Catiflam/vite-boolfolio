@@ -1,5 +1,5 @@
 <script>
-import ProjectList from "./components/projects/ProjectList.vue";
+import ProjectList from "../components/projects/ProjectList.vue";
 
 export default {
 	data() {
@@ -11,9 +11,6 @@ export default {
 
 <template>
 	<div class="container">
-		<h1>Hello World</h1>
-		<hr />
-		<router-view></router-view>
 		<ProjectList />
 	</div>
 </template>
